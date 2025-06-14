@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Star Craft Realms | Servidor Premium de Minecraft</title>
+    <title>Star Craft Realms - Servidor Premium de Minecraft</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --space-dark: #0a1128;
@@ -14,14 +14,9 @@
             --star-gold: #d4af37;
             --sun-orange: #ffb74d;
             --accent-blue: #64b5f6;
-            --vip-stellar: #4db6ac;
-            --vip-basic: #64b5f6;
-            --vip-plus: #ff7043;
-            --vip-ark: #ba68c8;
             --text-light: #ffffff;
             --text-gray: #e0e0e0;
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            --glow-intensity: 0.6;
         }
 
         * {
@@ -37,8 +32,6 @@
             overflow-x: hidden;
             line-height: 1.6;
             background-attachment: fixed;
-            min-height: 100vh;
-            position: relative;
         }
 
         /* Animação de estrelas */
@@ -62,77 +55,52 @@
 
         @keyframes twinkle {
             0%, 100% { opacity: 0; }
-            50% { opacity: var(--glow-intensity); }
-        }
-
-        /* Nebulosa Animation */
-        .nebula {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 30%, rgba(44, 74, 122, 0.2) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 50% 20%, rgba(186, 104, 200, 0.1) 0%, transparent 40%);
-            z-index: -1;
-            opacity: 0.5;
-            animation: nebula-move 120s infinite linear;
-        }
-
-        @keyframes nebula-move {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
+            50% { opacity: 0.6; }
         }
 
         /* Header */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(10, 17, 40, 0.95);
-            padding: 1.2rem 5%;
+            position: relative;
+            background: rgba(10, 17, 40, 0.9);
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            z-index: 100;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
             backdrop-filter: blur(10px);
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-            transition: var(--transition);
-        }
-
-        header.scrolled {
-            padding: 0.8rem 5%;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
             text-decoration: none;
+            z-index: 101;
+        }
+
+        .logo-image {
+            height: 40px;
         }
 
         .logo-icon {
             position: relative;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: radial-gradient(circle at center, var(--star-gold) 0%, var(--sun-orange) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            animation: pulse 4s infinite;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            animation: pulse 3s infinite;
         }
 
         .logo-icon::before {
             content: "";
             position: absolute;
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             background: transparent;
             border-radius: 50%;
             z-index: 1;
@@ -140,83 +108,80 @@
         }
 
         .logo-icon i {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             color: var(--star-gold);
             z-index: 2;
         }
 
         .logo-text {
             font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            font-size: 1.8rem;
+            font-weight: 600;
+            font-size: 1.4rem;
             color: var(--text-light);
             letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
         .logo-text span {
             color: var(--star-gold);
-            font-weight: 800;
         }
 
         @keyframes pulse {
-            0% { 
-                transform: scale(1);
-                box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); 
-            }
-            50% { 
-                transform: scale(1.05);
-                box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); 
-            }
-            100% { 
-                transform: scale(1);
-                box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); 
-            }
+            0% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(212, 175, 55, 0.5); }
+            100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
         }
 
-        .mobile-menu-btn {
+        /* Menu Mobile */
+        .menu-toggle {
             display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
             background: transparent;
             border: none;
-            color: var(--star-gold);
-            font-size: 1.8rem;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 101;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: var(--star-gold);
+            border-radius: 2px;
+            transition: var(--transition);
         }
 
         nav ul {
             display: flex;
-            gap: 2rem;
+            gap: 1.2rem;
             list-style: none;
         }
 
         nav a {
             color: var(--text-gray);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 500;
+            font-size: 0.95rem;
             position: relative;
             transition: var(--transition);
             font-family: 'Orbitron', sans-serif;
-            letter-spacing: 1px;
-            text-transform: uppercase;
         }
 
         nav a:hover {
             color: var(--star-gold);
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
         nav a::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 3px;
+            height: 2px;
             bottom: -5px;
             left: 0;
             background: var(--star-gold);
             transition: var(--transition);
-            border-radius: 2px;
         }
 
         nav a:hover::after {
@@ -225,24 +190,21 @@
 
         .cta-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 0.6rem;
         }
 
         .btn {
-            padding: 0.8rem 1.8rem;
-            border-radius: 30px;
-            font-weight: 700;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 600;
             text-decoration: none;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 0.7rem;
-            font-size: 1rem;
+            gap: 0.4rem;
+            font-size: 0.85rem;
             font-family: 'Montserrat', sans-serif;
-            border: 2px solid transparent;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            border: 1px solid transparent;
         }
 
         .btn-primary {
@@ -251,26 +213,25 @@
         }
 
         .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
         }
 
         .btn-secondary {
             background: transparent;
-            border: 2px solid var(--star-gold);
+            border: 1px solid var(--star-gold);
             color: var(--star-gold);
         }
 
         .btn-secondary:hover {
             background: rgba(212, 175, 55, 0.1);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            transform: translateY(-3px);
         }
 
         /* Hero Section */
         .hero {
             position: relative;
-            min-height: 100vh;
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -279,42 +240,22 @@
             padding: 2rem 5%;
             overflow: hidden;
             z-index: 2;
-            padding-top: 100px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-            z-index: -1;
-            animation: rotate 60s linear infinite;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         .hero-content {
-            max-width: 1000px;
+            max-width: 900px;
             position: relative;
             z-index: 3;
         }
 
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
             color: var(--text-light);
             text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
-            line-height: 1.1;
+            letter-spacing: 1px;
         }
 
         .hero h1 span {
@@ -322,430 +263,201 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            display: block;
-            margin-top: 0.5rem;
         }
 
         .hero p {
-            font-size: clamp(1rem, 3vw, 1.4rem);
-            max-width: 800px;
-            margin: 0 auto 3rem;
+            font-size: 1rem;
+            max-width: 700px;
+            margin: 0 auto 1.8rem;
             color: var(--text-gray);
-            line-height: 1.8;
-            font-weight: 300;
-            padding: 0 1rem;
+            line-height: 1.6;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 2rem;
-            margin-top: 3rem;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
             justify-content: center;
-            flex-wrap: wrap;
+            align-items: center;
         }
 
         .btn-large {
-            padding: 1.2rem 2.5rem;
-            font-size: 1.2rem;
-            min-width: 250px;
+            padding: 0.9rem 1.8rem;
+            font-size: 1rem;
+            min-width: 220px;
             justify-content: center;
-            font-weight: 700;
-            border-radius: 50px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 300px;
         }
 
         .solar-flare {
             position: absolute;
-            width: min(800px, 90vw);
-            height: min(800px, 90vw);
-            background: radial-gradient(circle, rgba(255, 183, 77, 0.15) 0%, transparent 70%);
+            width: 100%;
+            max-width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 183, 77, 0.1) 0%, transparent 70%);
             border-radius: 50%;
             z-index: 1;
-            animation: flare 15s infinite alternate;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            animation: flare 10s infinite alternate;
         }
 
         @keyframes flare {
-            0% { 
-                opacity: 0.3; 
-                transform: translate(-50%, -50%) scale(0.9); 
-            }
-            100% { 
-                opacity: 0.6; 
-                transform: translate(-50%, -50%) scale(1.1); 
-            }
-        }
-
-        .floating-rocks {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .rock {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            background: url('https://i.imgur.com/8eJd7aM.png') no-repeat center/contain;
-            opacity: 0.4;
-            animation: float 25s infinite linear;
-        }
-
-        .rock:nth-child(1) { top: 20%; left: 10%; animation-duration: 40s; }
-        .rock:nth-child(2) { top: 60%; left: 80%; animation-duration: 35s; }
-        .rock:nth-child(3) { top: 40%; left: 85%; animation-duration: 50s; }
-        .rock:nth-child(4) { top: 70%; left: 15%; animation-duration: 45s; }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(20px, 20px) rotate(5deg); }
-            50% { transform: translate(0, 40px) rotate(0deg); }
-            75% { transform: translate(-20px, 20px) rotate(-5deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
+            0% { opacity: 0.3; transform: scale(0.95); }
+            100% { opacity: 0.5; transform: scale(1.05); }
         }
 
         /* Planos VIP */
         .plans {
-            padding: 8rem 5%;
+            padding: 3rem 5%;
             position: relative;
             z-index: 2;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 5rem;
+            margin-bottom: 2.5rem;
             position: relative;
         }
 
         .section-title h2 {
             font-family: 'Orbitron', sans-serif;
-            font-weight: 800;
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-size: 2rem;
+            font-weight: 600;
             display: inline-block;
             color: var(--text-light);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
-            position: relative;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 150px;
-            height: 4px;
-            background: linear-gradient(to right, var(--star-gold), var(--sun-orange));
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
+            margin-bottom: 0.8rem;
         }
 
         .section-title p {
             color: var(--text-gray);
-            max-width: 700px;
-            margin: 2rem auto 0;
-            font-size: clamp(1rem, 3vw, 1.3rem);
-            line-height: 1.8;
-            padding: 0 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 0.95rem;
         }
 
         .plans-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
+            display: flex;
+            overflow-x: auto;
+            gap: 1.5rem;
+            padding: 1rem 0 2rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--star-gold) transparent;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .plans-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .plans-container::-webkit-scrollbar-thumb {
+            background-color: var(--star-gold);
+            border-radius: 3px;
         }
 
         .plan-card {
-            background: linear-gradient(145deg, rgba(28, 46, 74, 0.8) 0%, rgba(10, 17, 40, 0.9) 100%);
-            border-radius: 20px;
+            background: rgba(28, 46, 74, 0.7);
+            border-radius: 8px;
             overflow: hidden;
             transition: var(--transition);
-            border: 2px solid rgba(212, 175, 55, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             backdrop-filter: blur(10px);
             position: relative;
             z-index: 1;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            transform: translateY(0) scale(1);
-            perspective: 1000px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            min-width: 280px;
+            flex-shrink: 0;
         }
 
         .plan-card:hover {
-            transform: translateY(-20px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-            border-color: rgba(212, 175, 55, 0.7);
-        }
-
-        /* Cores específicas para cada plano */
-        .vip-stellar {
-            border-top: 8px solid var(--vip-stellar);
-        }
-        .vip-basic {
-            border-top: 8px solid var(--vip-basic);
-        }
-        .vip-plus {
-            border-top: 8px solid var(--vip-plus);
-        }
-        .vip-ark {
-            border-top: 8px solid var(--vip-ark);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(212, 175, 55, 0.4);
         }
 
         .plan-header {
-            padding: 2.5rem 2rem;
+            padding: 1.5rem;
             text-align: center;
-            background: rgba(10, 17, 40, 0.7);
+            background: rgba(10, 17, 40, 0.6);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            position: relative;
         }
 
         .plan-name {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .vip-stellar .plan-name {
-            color: var(--vip-stellar);
-            text-shadow: 0 0 10px rgba(77, 182, 172, 0.4);
-        }
-        .vip-basic .plan-name {
-            color: var(--vip-basic);
-            text-shadow: 0 0 10px rgba(100, 181, 246, 0.4);
-        }
-        .vip-plus .plan-name {
-            color: var(--vip-plus);
-            text-shadow: 0 0 10px rgba(255, 112, 67, 0.4);
-        }
-        .vip-ark .plan-name {
-            color: var(--vip-ark);
-            text-shadow: 0 0 10px rgba(186, 104, 200, 0.4);
-        }
-
-        .price-container {
-            background: rgba(10, 17, 40, 0.9);
-            padding: 1.2rem;
-            border-radius: 15px;
-            display: inline-block;
+            font-size: 1.4rem;
+            font-weight: 600;
             margin-bottom: 1rem;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--star-gold);
         }
 
         .price {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            font-weight: 900;
-            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
             color: var(--text-light);
             font-family: 'Montserrat', sans-serif;
         }
 
-        .vip-stellar .price {
-            color: var(--vip-stellar);
-        }
-        .vip-basic .price {
-            color: var(--vip-basic);
-        }
-        .vip-plus .price {
-            color: var(--vip-plus);
-        }
-        .vip-ark .price {
-            color: var(--vip-ark);
-        }
-
         .price span {
-            font-size: clamp(1rem, 3vw, 1.3rem);
-            color: var(--text-gray);
+            font-size: 1rem;
+            color: var(--star-gold);
         }
 
         .duration {
             color: var(--text-gray);
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            margin-bottom: 0.5rem;
-        }
-
-        .permanent-price {
-            font-weight: 700;
-            color: var(--star-gold);
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-size: 0.8rem;
         }
 
         .plan-features {
-            padding: 2rem;
-            max-height: 500px;
+            padding: 1.5rem;
+            max-height: 400px;
             overflow-y: auto;
-        }
-
-        .plan-features::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        .plan-features::-webkit-scrollbar-track {
-            background: rgba(10, 17, 40, 0.3);
-            border-radius: 10px;
-        }
-        
-        .plan-features::-webkit-scrollbar-thumb {
-            background: var(--star-gold);
-            border-radius: 10px;
         }
 
         .feature {
             display: flex;
             align-items: flex-start;
-            gap: 1.2rem;
-            margin-bottom: 1.8rem;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
             transition: var(--transition);
-            padding: 1.2rem;
-            border-radius: 12px;
-            background: rgba(10, 17, 40, 0.4);
-            border-left: 3px solid var(--star-gold);
         }
 
         .feature:hover {
-            transform: translateX(10px);
-            background: rgba(44, 74, 122, 0.5);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateX(5px);
         }
 
         .feature i {
-            font-size: clamp(1.4rem, 3vw, 1.8rem);
-            min-width: 40px;
-            margin-top: 5px;
-        }
-
-        .vip-stellar .feature i {
-            color: var(--vip-stellar);
-        }
-        .vip-basic .feature i {
-            color: var(--vip-basic);
-        }
-        .vip-plus .feature i {
-            color: var(--vip-plus);
-        }
-        .vip-ark .feature i {
-            color: var(--vip-ark);
-        }
-
-        .feature-content {
-            flex: 1;
-        }
-
-        .feature-title {
-            font-weight: 700;
-            font-size: clamp(1.1rem, 3vw, 1.3rem);
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
+            color: var(--star-gold);
+            font-size: 1rem;
+            min-width: 20px;
+            margin-top: 4px;
         }
 
         .feature-text {
             color: var(--text-gray);
-            font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-            line-height: 1.6;
+            font-size: 0.85rem;
         }
 
         .plan-cta {
-            padding: 0 2rem 2.5rem;
+            padding: 0 1.5rem 1.5rem;
             text-align: center;
-        }
-
-        .btn-plan {
-            padding: 1.2rem 2.5rem;
-            font-weight: 800;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            border-radius: 50px;
-            width: 100%;
-            max-width: 280px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .vip-stellar .btn-plan {
-            background: linear-gradient(135deg, var(--vip-stellar) 0%, #42a5f5 100%);
-            color: var(--space-dark);
-        }
-
-        .vip-basic .btn-plan {
-            background: linear-gradient(135deg, var(--vip-basic) 0%, #26a69a 100%);
-            color: var(--space-dark);
-        }
-
-        .vip-plus .btn-plan {
-            background: linear-gradient(135deg, var(--vip-plus) 0%, #f4511e 100%);
-            color: var(--text-light);
-        }
-
-        .vip-ark .btn-plan {
-            background: linear-gradient(135deg, var(--vip-ark) 0%, #9c27b0 100%);
-            color: var(--text-light);
-        }
-
-        .btn-plan:hover {
-            transform: translateY(-7px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .btn-plan::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn-plan:hover::before {
-            left: 100%;
         }
 
         /* Comparação de Planos */
         .comparison {
-            padding: 8rem 5%;
-            background: rgba(10, 17, 40, 0.7);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .comparison::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/black-linen.png');
-            opacity: 0.1;
-            z-index: -1;
+            padding: 3rem 5%;
+            background: rgba(10, 17, 40, 0.5);
         }
 
         .comparison-table {
-            max-width: 1400px;
+            max-width: 1000px;
             margin: 0 auto;
-            background: rgba(28, 46, 74, 0.8);
-            border-radius: 20px;
+            background: rgba(28, 46, 74, 0.7);
+            border-radius: 8px;
             overflow: hidden;
-            border: 2px solid rgba(212, 175, 55, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             backdrop-filter: blur(10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             overflow-x: auto;
         }
 
@@ -756,103 +468,79 @@
         }
 
         th, td {
-            padding: 1.8rem;
+            padding: 1rem;
             text-align: center;
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            font-size: 0.85rem;
         }
 
         thead th {
-            background: rgba(10, 17, 40, 0.9);
-            font-weight: 800;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            background: rgba(10, 17, 40, 0.8);
+            font-weight: 600;
+            font-size: 0.95rem;
             color: var(--star-gold);
             font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: sticky;
-            top: 0;
-            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
         }
 
         tbody tr:nth-child(odd) {
-            background: rgba(28, 46, 74, 0.5);
+            background: rgba(28, 46, 74, 0.4);
         }
 
         tbody tr:hover {
-            background: rgba(44, 74, 122, 0.4);
+            background: rgba(44, 74, 122, 0.3);
         }
 
         tbody td:first-child {
             text-align: left;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            font-weight: 500;
         }
 
         .feature-icon {
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
-            min-width: 40px;
-        }
-
-        .vip-stellar th:nth-child(2) {
-            background: rgba(77, 182, 172, 0.2);
-        }
-        .vip-basic th:nth-child(3) {
-            background: rgba(100, 181, 246, 0.2);
-        }
-        .vip-plus th:nth-child(4) {
-            background: rgba(255, 112, 67, 0.2);
-        }
-        .vip-ark th:nth-child(5) {
-            background: rgba(186, 104, 200, 0.2);
+            color: var(--star-gold);
+            font-size: 0.95rem;
         }
 
         .yes {
             color: var(--star-gold);
-            font-weight: 800;
-            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
         }
 
         .no {
             color: #b0b0b0;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
         }
 
         /* Footer */
         footer {
-            background: linear-gradient(to top, rgba(10, 17, 40, 0.95) 0%, rgba(10, 17, 40, 0.8) 100%);
-            padding: 6rem 5% 3rem;
+            background: rgba(10, 17, 40, 0.9);
+            padding: 3rem 5% 2rem;
             position: relative;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .footer-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 4rem;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
         }
 
         .footer-section h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(1.4rem, 3vw, 1.8rem);
-            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
             color: var(--star-gold);
             position: relative;
-            padding-bottom: 1rem;
+            padding-bottom: 0.5rem;
         }
 
         .footer-section h3::after {
             content: '';
             position: absolute;
-            width: 80px;
-            height: 4px;
+            width: 50px;
+            height: 2px;
             background: var(--star-gold);
             bottom: 0;
             left: 0;
-            border-radius: 2px;
+            border-radius: 1px;
         }
 
         .footer-links {
@@ -860,7 +548,7 @@
         }
 
         .footer-links li {
-            margin-bottom: 1.2rem;
+            margin-bottom: 0.6rem;
         }
 
         .footer-links a {
@@ -869,59 +557,56 @@
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 1rem;
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            padding: 0.7rem 0;
+            gap: 0.5rem;
+            font-size: 0.9rem;
         }
 
         .footer-links a:hover {
             color: var(--star-gold);
-            transform: translateX(10px);
+            transform: translateX(5px);
         }
 
         .social-icons {
             display: flex;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 1rem;
+            margin-top: 1.2rem;
         }
 
         .social-icons a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background: rgba(212, 175, 55, 0.1);
             color: var(--star-gold);
             transition: var(--transition);
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            font-size: 1.4rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .social-icons a:hover {
             background: var(--star-gold);
             color: var(--space-dark);
-            transform: translateY(-8px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 4rem;
+            padding-top: 2rem;
             color: var(--text-gray);
-            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            font-size: 0.85rem;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
-            margin-top: 4rem;
+            margin-top: 2rem;
             max-width: 1200px;
-            margin: 4rem auto 0;
+            margin: 2rem auto 0;
         }
 
         /* Animações e efeitos */
         .fade-in {
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease, transform 1s ease;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .fade-in.appear {
@@ -929,137 +614,102 @@
             transform: translateY(0);
         }
 
-        .highlight {
-            position: relative;
-            display: inline-block;
-        }
-
-        .highlight::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 4px;
-            bottom: -5px;
+        /* Menu Mobile Ativo */
+        .mobile-menu-active {
+            position: fixed;
+            top: 0;
             left: 0;
-            background: var(--star-gold);
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.5s ease;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 17, 40, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 99;
+            transition: all 0.5s ease;
         }
 
-        .highlight:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
+        .mobile-menu-active ul {
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .mobile-menu-active a {
+            font-size: 1.2rem;
+        }
+
+        .mobile-menu-active .cta-buttons {
+            margin-top: 2rem;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         /* Responsividade */
-        @media (max-width: 1200px) {
-            .plans-container {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-        }
-
-        @media (max-width: 992px) {
+        @media (min-width: 768px) {
             .hero h1 {
-                font-size: 3.5rem;
+                font-size: 3rem;
             }
             
-            nav ul {
-                gap: 1.2rem;
+            .hero p {
+                font-size: 1.1rem;
             }
             
-            .section-title h2 {
-                font-size: 2.8rem;
+            .hero-buttons {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .plans-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                overflow-x: visible;
+                padding: 0;
+            }
+            
+            .plan-card {
+                min-width: auto;
             }
         }
 
-        @media (max-width: 768px) {
-            header {
-                padding: 1.2rem 5%;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
+        @media (max-width: 767px) {
+            .menu-toggle {
+                display: flex;
             }
             
             nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 280px;
-                height: 100vh;
-                background: rgba(10, 17, 40, 0.95);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                padding: 6rem 2rem 2rem;
-                transition: right 0.5s ease;
-                z-index: 1000;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-            }
-            
-            nav.active {
-                right: 0;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                gap: 1.5rem;
+                display: none;
             }
             
             .cta-buttons {
                 display: none;
             }
             
+            .mobile-nav {
+                display: flex;
+            }
+            
             .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 1.5rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.4rem;
-            }
-            
-            .plans-container {
-                grid-template-columns: 1fr;
-                max-width: 600px;
+                font-size: 2rem;
             }
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
             
             .btn-large {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .solar-flare {
-                width: 500px;
-                height: 500px;
-            }
-            
-            .plan-card {
-                margin-bottom: 3rem;
-            }
-            
-            th, td {
-                padding: 1.2rem;
-                font-size: 0.95rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
+                min-width: auto;
             }
         }
     </style>
@@ -1067,13 +717,6 @@
 <body>
     <!-- Animação de Estrelas -->
     <div class="stars" id="stars"></div>
-    <div class="nebula"></div>
-    <div class="floating-rocks">
-        <div class="rock"></div>
-        <div class="rock"></div>
-        <div class="rock"></div>
-        <div class="rock"></div>
-    </div>
 
     <!-- Cabeçalho -->
     <header>
@@ -1081,41 +724,66 @@
             <div class="logo-icon">
                 <i class="fas fa-star"></i>
             </div>
-            <div class="logo-text">STAR <span>CRAFT</span></div>
+            <img src="title.png" alt="Ice Craft" class="logo-image">
         </a>
         
-        <button class="mobile-menu-btn" id="mobileMenuBtn">
-            <i class="fas fa-bars"></i>
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
         
-        <nav id="mainNav">
+        <nav id="desktopNav">
             <ul>
-                <li><a href="#home" class="highlight">Início</a></li>
-                <li><a href="#plans" class="highlight">Planos VIP</a></li>
-                <li><a href="#comparison" class="highlight">Comparação</a></li>
-                <li><a href="https://discord.gg/S4DSjbEXcg" target="_blank" class="highlight">Discord</a></li>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#plans">Planos VIP</a></li>
+                <li><a href="#comparison">Comparação</a></li>
+                <li><a href="https://discord.gg/sM2JTRpzA2" target="_blank">Discord</a></li>
             </ul>
         </nav>
         <div class="cta-buttons">
-            <a href="https://open.minecraft.net/pocket/realms/invite/HbZwAYY95DJgKx4" class="btn btn-primary" target="_blank">
+            <a href="https://realms.gg/h2Vif5phj2Pbsuo" class="btn btn-primary" target="_blank">
                 <i class="fas fa-play"></i>Entrar
             </a>
         </div>
     </header>
+    
+    <!-- Menu Mobile -->
+    <div class="mobile-menu-active" id="mobileMenu" style="display: none;">
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#plans">Planos VIP</a></li>
+                <li><a href="#comparison">Comparação</a></li>
+                <li><a href="https://discord.gg/sM2JTRpzA2" target="_blank">Discord</a></li>
+            </ul>
+        </nav>
+        <div class="cta-buttons">
+            <a href="https://realms.gg/h2Vif5phj2Pbsuo" class="btn btn-primary" target="_blank">
+                <i class="fas fa-play"></i>Entrar no Realm
+            </a>
+            <a href="https://discord.gg/NQRJAe39Pz" class="btn btn-secondary" target="_blank">
+                <i class="fas fa-shopping-cart"></i>Comprar VIP
+            </a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="solar-flare"></div>
         <div class="hero-content">
-            <h1>EXPERIÊNCIA VIP <span>GALÁCTICA</span></h1>
-            <p>Desbloqueie poderes extraordinários e vantagens exclusivas em nosso servidor premium de Minecraft. Transforme sua jornada com recursos que elevam sua gameplay a outro nível!</p>
+            <h1>EXPLORE O UNIVERSO DO <span>MINECRAFT</span></h1>
+            <p>Bem-vindo ao Star Craft Realms, onde aventuras épicas e recursos exclusivos aguardam por você. Junte-se à nossa comunidade galáctica e descubra um universo de possibilidades!</p>
             
             <div class="hero-buttons">
-                <a href="#plans" class="btn btn-primary btn-large">
-                    <i class="fas fa-crown"></i>Ver Planos VIP
+                <a href="https://realms.gg/h2Vif5phj2Pbsuo" class="btn btn-primary btn-large" target="_blank">
+                    <i class="fas fa-play"></i>Entrar no Realm
                 </a>
-                <a href="https://open.minecraft.net/pocket/realms/invite/HbZwAYY95DJgKx4" class="btn btn-secondary btn-large" target="_blank">
-                    <i class="fas fa-rocket"></i>Entrar no Realm
+                <a href="https://discord.gg/sM2JTRpzA2" class="btn btn-secondary btn-large" target="_blank">
+                    <i class="fab fa-discord"></i>Entrar no Discord
+                </a>
+                <a href="#plans" class="btn btn-secondary btn-large">
+                    <i class="fas fa-crown"></i>Planos VIP
                 </a>
             </div>
         </div>
@@ -1125,331 +793,227 @@
     <section class="plans" id="plans">
         <div class="section-title">
             <h2>PLANOS VIP EXCLUSIVOS</h2>
-            <p>Escolha o pacote perfeito para sua aventura e desbloqueie recursos incríveis</p>
+            <p>Desbloqueie vantagens especiais e recursos premium para melhorar sua experiência no Star Craft Realms</p>
         </div>
         
         <div class="plans-container">
-            <!-- VIP STELLAR -->
-            <div class="plan-card fade-in vip-stellar">
+            <!-- VIP Menos -->
+            <div class="plan-card fade-in">
                 <div class="plan-header">
                     <div class="plan-name">
-                        <i class="fas fa-star"></i> VIP STELLAR
+                        <i class="fas fa-star"></i> VIP Menos
                     </div>
-                    <div class="price-container">
-                        <div class="price">R$ 5,00 <span>/mês</span></div>
-                        <div class="duration">ou <span class="permanent-price">R$ 10,00 permanente</span></div>
-                    </div>
+                    <div class="price">R$ 5,00 <span>/mês</span></div>
+                    <div class="duration">ou R$ 10,00 permanente</div>
                 </div>
                 <div class="plan-features">
                     <div class="feature">
                         <i class="fas fa-bolt"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Efeito de Pressa I</div>
-                            <div class="feature-text">Minere e construa com mais velocidade</div>
-                        </div>
+                        <div class="feature-text">Efeito de Pressa I</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-moon"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Visão no Escuro</div>
-                            <div class="feature-text">Enxergue perfeitamente em qualquer ambiente</div>
-                        </div>
+                        <div class="feature-text">Visão no Escuro</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-home"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Até 6 Homes</div>
-                            <div class="feature-text">Defina pontos de teleporte personalizados</div>
-                        </div>
+                        <div class="feature-text">Até 6 Homes</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-lock"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Áreas Exclusivas</div>
-                            <div class="feature-text">Acesso a locais secretos para VIPs</div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-shield-alt"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Proteção Contra Roubos</div>
-                            <div class="feature-text">Seus itens estão seguros</div>
-                        </div>
+                        <div class="feature-text">Acesso a Áreas Exclusivas</div>
                     </div>
                 </div>
                 <div class="plan-cta">
-                    <a href="https://discord.gg/qRGveEVnEa" class="btn-plan">Comprar Agora</a>
+                    <a href="https://discord.gg/NQRJAe39Pz" class="btn btn-primary">Comprar Agora</a>
                 </div>
             </div>
             
-            <!-- VIP BASIC -->
-            <div class="plan-card fade-in vip-basic">
+            <!-- VIP Basic -->
+            <div class="plan-card fade-in">
                 <div class="plan-header">
                     <div class="plan-name">
-                        <i class="fas fa-gem"></i> VIP BASIC
+                        <i class="fas fa-sun"></i> VIP Basic
                     </div>
-                    <div class="price-container">
-                        <div class="price">R$ 10,00 <span>/mês</span></div>
-                        <div class="duration">ou <span class="permanent-price">R$ 30,00 permanente</span></div>
-                    </div>
+                    <div class="price">R$ 10,00 <span>/mês</span></div>
+                    <div class="duration">ou R$ 30,00 permanente</div>
                 </div>
                 <div class="plan-features">
                     <div class="feature">
                         <i class="fas fa-utensils"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Nunca Sente Fome</div>
-                            <div class="feature-text">Esqueça a necessidade de comer!</div>
-                        </div>
+                        <div class="feature-text">Nunca sente fome</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-moon"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Visão no Escuro</div>
-                            <div class="feature-text">Enxergue perfeitamente em qualquer ambiente</div>
-                        </div>
+                        <div class="feature-text">Visão no escuro</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-bolt"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Efeito de Pressa II</div>
-                            <div class="feature-text">Minere e construa mais rápido!</div>
-                        </div>
+                        <div class="feature-text">Efeito de Pressa II</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-heart"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">+2 Corações Extras</div>
-                            <div class="feature-text">Mais resistência em batalhas</div>
-                        </div>
+                        <div class="feature-text">+2 Corações Extras</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-coins"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">100 Moedas/5min</div>
-                            <div class="feature-text">Ganhe renda extra enquanto joga</div>
-                        </div>
+                        <div class="feature-text">100 moedas a cada 5 minutos</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-headset"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Suporte Prioritário</div>
-                            <div class="feature-text">Atendimento mais rápido e eficiente</div>
-                        </div>
+                        <div class="feature-text">Suporte Prioritário</div>
                     </div>
                     <div class="feature">
-                        <i class="fas fa-rocket"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Teletransporte Instantâneo</div>
-                            <div class="feature-text">Sem tempo de espera</div>
-                        </div>
+                        <i class="fas fa-route"></i>
+                        <div class="feature-text">Teletransporte Instantâneo</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <div class="feature-text">Sem taxa para teletransporte</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-home"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Até 10 Homes</div>
-                            <div class="feature-text">Marque mais locais favoritos</div>
-                        </div>
+                        <div class="feature-text">Até 10 Homes</div>
                     </div>
                 </div>
                 <div class="plan-cta">
-                    <a href="https://discord.gg/qRGveEVnEa" class="btn-plan">Comprar Agora</a>
+                    <a href="https://discord.gg/NQRJAe39Pz" class="btn btn-primary">Comprar Agora</a>
                 </div>
             </div>
             
-            <!-- VIP PLUS -->
-            <div class="plan-card fade-in vip-plus">
+            <!-- VIP Plus -->
+            <div class="plan-card fade-in">
                 <div class="plan-header">
                     <div class="plan-name">
-                        <i class="fas fa-fire"></i> VIP PLUS
+                        <i class="fab fa-galactic-republic"></i> VIP Plus
                     </div>
-                    <div class="price-container">
-                        <div class="price">R$ 15,00 <span>/mês</span></div>
-                        <div class="duration">ou <span class="permanent-price">R$ 50,00 permanente</span></div>
-                    </div>
+                    <div class="price">R$ 15,00 <span>/mês</span></div>
+                    <div class="duration">ou R$ 50,00 permanente</div>
                 </div>
                 <div class="plan-features">
                     <div class="feature">
                         <i class="fas fa-utensils"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Nunca Sente Fome</div>
-                            <div class="feature-text">Esqueça a necessidade de comer!</div>
-                        </div>
+                        <div class="feature-text">Nunca sente fome</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-moon"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Visão no Escuro</div>
-                            <div class="feature-text">Enxergue perfeitamente em qualquer ambiente</div>
-                        </div>
+                        <div class="feature-text">Visão no escuro</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-bolt"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Efeito de Pressa III</div>
-                            <div class="feature-text">Minere e construa com velocidade máxima!</div>
-                        </div>
+                        <div class="feature-text">Efeito de Pressa III</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-heart"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">+4 Corações Extras</div>
-                            <div class="feature-text">Mais vida para enfrentar qualquer desafio</div>
-                        </div>
+                        <div class="feature-text">+4 Corações Extras</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-coins"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">400 Moedas/5min</div>
-                            <div class="feature-text">Ganhe uma renda extra enquanto joga!</div>
-                        </div>
+                        <div class="feature-text">400 moedas a cada 5 minutos</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-headset"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Suporte Prioritário</div>
-                            <div class="feature-text">Atendimento mais rápido e eficiente</div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-shield-alt"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Imunidades Completas</div>
-                            <div class="feature-text">Wither, Veneno, Lentidão e muito mais!</div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-lock"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Áreas Exclusivas</div>
-                            <div class="feature-text">Entre em lugares secretos reservados</div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-store"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Lojas Exclusivas</div>
-                            <div class="feature-text">Compre itens raros e especiais</div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-home"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Até 20 Homes</div>
-                            <div class="feature-text">Defina muitos pontos de teleporte</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="plan-cta">
-                    <a href="https://discord.gg/qRGveEVnEa" class="btn-plan">Comprar Agora</a>
-                </div>
-            </div>
-            
-            <!-- VIP ARK -->
-            <div class="plan-card fade-in vip-ark">
-                <div class="plan-header">
-                    <div class="plan-name">
-                        <i class="fas fa-dragon"></i> VIP ARK
-                    </div>
-                    <div class="price-container">
-                        <div class="price">R$ 25,00 <span>/mês</span></div>
-                        <div class="duration">ou <span class="permanent-price">R$ 70,00 permanente</span></div>
-                    </div>
-                </div>
-                <div class="plan-features">
-                    <div class="feature">
-                        <i class="fas fa-utensils"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Nunca Sente Fome</div>
-                            <div class="feature-text">Esqueça a necessidade de comer!</div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-moon"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Visão no Escuro</div>
-                            <div class="feature-text">Enxergue perfeitamente em qualquer ambiente</div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-bolt"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Efeito de Pressa IV</div>
-                            <div class="feature-text">Minere com velocidade impressionante!</div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-fist-raised"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Força I</div>
-                            <div class="feature-text">Ataque com extrema potência!</div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-heart"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">+8 Corações Extras</div>
-                            <div class="feature-text">Muita vida para dominar qualquer batalha</div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-heartbeat"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Regeneração I</div>
-                            <div class="feature-text">Cure-se automaticamente com o tempo</div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-shield-alt"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Resistência II + Fogo II</div>
-                            <div class="feature-text">Aguente mais dano e caminhe pelo fogo</div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-water"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Respiração Aquática II</div>
-                            <div class="feature-text">Explore oceanos sem se preocupar</div>
-                        </div>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-coins"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">800 Moedas/5min</div>
-                            <div class="feature-text">Lucre enquanto joga!</div>
-                        </div>
+                        <div class="feature-text">Suporte Prioritário</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-skull"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Imunidades Completas</div>
-                            <div class="feature-text">Wither, Veneno, Lentidão e mais</div>
-                        </div>
+                        <div class="feature-text">Imunidade a Wither</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-flask"></i>
+                        <div class="feature-text">Imunidade a Veneno</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <div class="feature-text">Imunidade a Lentidão</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-lock"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Áreas Exclusivas</div>
-                            <div class="feature-text">Entre em lugares secretos reservados</div>
-                        </div>
+                        <div class="feature-text">Acesso a Áreas Exclusivas</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-store"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Lojas Exclusivas</div>
-                            <div class="feature-text">Compre itens raros e únicos!</div>
-                        </div>
+                        <div class="feature-text">Acesso a Lojas Exclusivas</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-route"></i>
+                        <div class="feature-text">Teletransporte Instantâneo</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <div class="feature-text">Sem taxa para teletransporte</div>
                     </div>
                     <div class="feature">
                         <i class="fas fa-home"></i>
-                        <div class="feature-content">
-                            <div class="feature-title">Até 50 Homes</div>
-                            <div class="feature-text">Defina muitos pontos de teleporte</div>
-                        </div>
+                        <div class="feature-text">Até 20 Homes</div>
                     </div>
                 </div>
                 <div class="plan-cta">
-                    <a href="https://discord.gg/qRGveEVnEa" class="btn-plan">Comprar Agora</a>
+                    <a href="https://discord.gg/NQRJAe39Pz" class="btn btn-primary">Comprar Agora</a>
+                </div>
+            </div>
+            
+            <!-- VIP Ark -->
+            <div class="plan-card fade-in">
+                <div class="plan-header">
+                    <div class="plan-name">
+                        <i class="fas fa-dragon"></i> VIP Ark
+                    </div>
+                    <div class="price">R$ 25,00 <span>/mês</span></div>
+                    <div class="duration">ou R$ 70,00 permanente</div>
+                </div>
+                <div class="plan-features">
+                    <div class="feature">
+                        <i class="fas fa-utensils"></i>
+                        <div class="feature-text">Nunca sente fome</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-moon"></i>
+                        <div class="feature-text">Visão no escuro</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-bolt"></i>
+                        <div class="feature-text">Efeito de Pressa IV</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-heart"></i>
+                        <div class="feature-text">+6 Corações Extras</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-coins"></i>
+                        <div class="feature-text">700 moedas a cada 5 minutos</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-headset"></i>
+                        <div class="feature-text">Suporte Prioritário 24/7</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <div class="feature-text">Imunidade a todos os efeitos negativos</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-lock"></i>
+                        <div class="feature-text">Acesso a todas áreas VIP</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-store"></i>
+                        <div class="feature-text">Acesso a lojas exclusivas premium</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-route"></i>
+                        <div class="feature-text">Teletransporte ilimitado</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <div class="feature-text">Sem taxas para qualquer ação</div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-home"></i>
+                        <div class="feature-text">Até 30 Homes</div>
+                    </div>
+                </div>
+                <div class="plan-cta">
+                    <a href="https://discord.gg/NQRJAe39Pz" class="btn btn-primary">Comprar Agora</a>
                 </div>
             </div>
         </div>
@@ -1467,10 +1031,10 @@
                 <thead>
                     <tr>
                         <th>Benefício</th>
-                        <th class="vip-stellar">VIP STELLAR</th>
-                        <th class="vip-basic">VIP BASIC</th>
-                        <th class="vip-plus">VIP PLUS</th>
-                        <th class="vip-ark">VIP ARK</th>
+                        <th>VIP Menos</th>
+                        <th>VIP Basic</th>
+                        <th>VIP Plus</th>
+                        <th>VIP Ark</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1493,35 +1057,28 @@
                         <td class="yes">6</td>
                         <td class="yes">10</td>
                         <td class="yes">20</td>
-                        <td class="yes">50</td>
+                        <td class="yes">30</td>
                     </tr>
                     <tr>
                         <td><i class="fas fa-heart feature-icon"></i> Corações Extras</td>
-                        <td class="no">-</td>
+                        <td class="no"><i class="fas fa-minus"></i></td>
                         <td class="yes">+2</td>
                         <td class="yes">+4</td>
-                        <td class="yes">+8</td>
+                        <td class="yes">+6</td>
                     </tr>
                     <tr>
                         <td><i class="fas fa-coins feature-icon"></i> Moedas por 5min</td>
-                        <td class="no">-</td>
+                        <td class="no"><i class="fas fa-minus"></i></td>
                         <td class="yes">100</td>
                         <td class="yes">400</td>
-                        <td class="yes">800</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-headset feature-icon"></i> Suporte Prioritário</td>
-                        <td class="no">-</td>
-                        <td class="yes"><i class="fas fa-check"></i></td>
-                        <td class="yes"><i class="fas fa-check"></i></td>
-                        <td class="yes"><i class="fas fa-check"></i></td>
+                        <td class="yes">700</td>
                     </tr>
                     <tr>
                         <td><i class="fas fa-shield-alt feature-icon"></i> Imunidades</td>
-                        <td class="no">-</td>
-                        <td class="no">-</td>
-                        <td class="yes">Completas</td>
-                        <td class="yes">Completas</td>
+                        <td class="no"><i class="fas fa-minus"></i></td>
+                        <td class="no"><i class="fas fa-minus"></i></td>
+                        <td class="yes">Wither, Veneno, Lentidão</td>
+                        <td class="yes">Todas</td>
                     </tr>
                     <tr>
                         <td><i class="fas fa-lock feature-icon"></i> Áreas Exclusivas</td>
@@ -1532,59 +1089,31 @@
                     </tr>
                     <tr>
                         <td><i class="fas fa-store feature-icon"></i> Lojas Exclusivas</td>
-                        <td class="no">-</td>
-                        <td class="no">-</td>
+                        <td class="no"><i class="fas fa-minus"></i></td>
+                        <td class="no"><i class="fas fa-minus"></i></td>
                         <td class="yes"><i class="fas fa-check"></i></td>
                         <td class="yes"><i class="fas fa-check"></i></td>
                     </tr>
                     <tr>
                         <td><i class="fas fa-utensils feature-icon"></i> Nunca sente fome</td>
-                        <td class="no">-</td>
+                        <td class="no"><i class="fas fa-minus"></i></td>
                         <td class="yes"><i class="fas fa-check"></i></td>
                         <td class="yes"><i class="fas fa-check"></i></td>
                         <td class="yes"><i class="fas fa-check"></i></td>
                     </tr>
                     <tr>
-                        <td><i class="fas fa-fist-raised feature-icon"></i> Força</td>
-                        <td class="no">-</td>
-                        <td class="no">-</td>
-                        <td class="no">-</td>
-                        <td class="yes">I</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-heartbeat feature-icon"></i> Regeneração</td>
-                        <td class="no">-</td>
-                        <td class="no">-</td>
-                        <td class="no">-</td>
-                        <td class="yes">I</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-shield-alt feature-icon"></i> Resistência</td>
-                        <td class="no">-</td>
-                        <td class="no">-</td>
-                        <td class="no">-</td>
-                        <td class="yes">II</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-fire feature-icon"></i> Resistência ao Fogo</td>
-                        <td class="no">-</td>
-                        <td class="no">-</td>
-                        <td class="no">-</td>
-                        <td class="yes">II</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-water feature-icon"></i> Respiração Aquática</td>
-                        <td class="no">-</td>
-                        <td class="no">-</td>
-                        <td class="no">-</td>
-                        <td class="yes">II</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-rocket feature-icon"></i> Teletransporte Instantâneo</td>
-                        <td class="no">-</td>
+                        <td><i class="fas fa-money-bill-wave feature-icon"></i> Sem taxa para teletransporte</td>
+                        <td class="no"><i class="fas fa-minus"></i></td>
                         <td class="yes"><i class="fas fa-check"></i></td>
                         <td class="yes"><i class="fas fa-check"></i></td>
                         <td class="yes"><i class="fas fa-check"></i></td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-headset feature-icon"></i> Suporte Prioritário</td>
+                        <td class="no"><i class="fas fa-minus"></i></td>
+                        <td class="yes"><i class="fas fa-check"></i></td>
+                        <td class="yes"><i class="fas fa-check"></i></td>
+                        <td class="yes">24/7</td>
                     </tr>
                 </tbody>
             </table>
@@ -1596,9 +1125,9 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Sobre o Star Craft</h3>
-                <p>O servidor premium de Minecraft que oferece a melhor experiência de jogo com recursos exclusivos e uma comunidade acolhedora.</p>
+                <p>O Star Craft é um servidor premium de Minecraft dedicado a proporcionar a melhor experiência de jogo com recursos exclusivos e uma comunidade acolhedora.</p>
                 <div class="social-icons">
-                    <a href="https://discord.gg/S4DSjbEXcg" target="_blank"><i class="fab fa-discord"></i></a>
+                    <a href="https://discord.gg/sM2JTRpzA2" target="_blank"><i class="fab fa-discord"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -1611,19 +1140,19 @@
                     <li><a href="#home"><i class="fas fa-arrow-right"></i> Início</a></li>
                     <li><a href="#plans"><i class="fas fa-arrow-right"></i> Planos VIP</a></li>
                     <li><a href="#comparison"><i class="fas fa-arrow-right"></i> Comparação</a></li>
-                    <li><a href="https://open.minecraft.net/pocket/realms/invite/HbZwAYY95DJgKx4" target="_blank"><i class="fas fa-arrow-right"></i> Entrar no Realm</a></li>
-                    <li><a href="https://discord.gg/S4DSjbEXcg" target="_blank"><i class="fas fa-arrow-right"></i> Discord</a></li>
+                    <li><a href="https://realms.gg/h2Vif5phj2Pbsuo" target="_blank"><i class="fas fa-arrow-right"></i> Entrar no Realm</a></li>
+                    <li><a href="https://discord.gg/sM2JTRpzA2" target="_blank"><i class="fas fa-arrow-right"></i> Discord</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
                 <h3>Comprar VIP</h3>
                 <ul class="footer-links">
-                    <li><a href="https://discord.gg/qRGveEVnEa" target="_blank"><i class="fas fa-arrow-right"></i> VIP Stellar</a></li>
-                    <li><a href="https://discord.gg/qRGveEVnEa" target="_blank"><i class="fas fa-arrow-right"></i> VIP Basic</a></li>
-                    <li><a href="https://discord.gg/qRGveEVnEa" target="_blank"><i class="fas fa-arrow-right"></i> VIP Plus</a></li>
-                    <li><a href="https://discord.gg/qRGveEVnEa" target="_blank"><i class="fas fa-arrow-right"></i> VIP Ark</a></li>
-                    <li><a href="https://discord.gg/qRGveEVnEa" target="_blank"><i class="fas fa-arrow-right"></i> Suporte</a></li>
+                    <li><a href="https://discord.gg/NQRJAe39Pz" target="_blank"><i class="fas fa-arrow-right"></i> VIP Menos</a></li>
+                    <li><a href="https://discord.gg/NQRJAe39Pz" target="_blank"><i class="fas fa-arrow-right"></i> VIP Basic</a></li>
+                    <li><a href="https://discord.gg/NQRJAe39Pz" target="_blank"><i class="fas fa-arrow-right"></i> VIP Plus</a></li>
+                    <li><a href="https://discord.gg/NQRJAe39Pz" target="_blank"><i class="fas fa-arrow-right"></i> VIP Ark</a></li>
+                    <li><a href="https://discord.gg/NQRJAe39Pz" target="_blank"><i class="fas fa-arrow-right"></i> Suporte</a></li>
                 </ul>
             </div>
         </div>
@@ -1638,14 +1167,14 @@
         // Criar efeito de estrelas
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            const starCount = 300;
+            const starCount = 150;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
                 
                 // Tamanho aleatório
-                const size = Math.random() * 3 + 1;
+                const size = Math.random() * 2 + 1;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
                 
@@ -1654,14 +1183,14 @@
                 star.style.top = `${Math.random() * 100}%`;
                 
                 // Opacidade
-                star.style.opacity = Math.random() * 0.8;
+                star.style.opacity = Math.random() * 0.5;
                 
                 // Duração da animação
-                const duration = Math.random() * 10 + 5;
+                const duration = Math.random() * 5 + 5;
                 star.style.animationDuration = `${duration}s`;
                 
                 // Atraso inicial
-                star.style.animationDelay = `${Math.random() * 20}s`;
+                star.style.animationDelay = `${Math.random() * 10}s`;
                 
                 starsContainer.appendChild(star);
             }
@@ -1673,7 +1202,7 @@
             
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 200;
+                const elementVisible = 150;
                 
                 if (elementTop < window.innerHeight - elementVisible) {
                     element.classList.add('appear');
@@ -1681,48 +1210,30 @@
             });
         }
         
-        // Header scroll effect
-        function headerScroll() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        }
+        // Menu Mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
         
-        // Mobile menu toggle
-        function setupMobileMenu() {
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mainNav = document.getElementById('mainNav');
-            
-            mobileMenuBtn.addEventListener('click', () => {
-                mainNav.classList.toggle('active');
-                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
-                    ? '<i class="fas fa-times"></i>' 
-                    : '<i class="fas fa-bars"></i>';
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Fechar menu ao clicar em um link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                mobileMenu.style.display = 'none';
             });
-            
-            // Fechar menu ao clicar em um link
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mainNav.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                });
-            });
-        }
+        });
         
         // Inicialização
         document.addEventListener('DOMContentLoaded', function() {
             createStars();
             fadeInOnScroll();
-            setupMobileMenu();
             
-            // Adicionar eventos
-            window.addEventListener('scroll', () => {
-                fadeInOnScroll();
-                headerScroll();
-            });
+            // Adicionar evento de scroll
+            window.addEventListener('scroll', fadeInOnScroll);
             
             // Suavizar rolagem para âncoras
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1734,26 +1245,16 @@
                     const target = document.querySelector(this.getAttribute('href'));
                     if (target) {
                         window.scrollTo({
-                            top: target.offsetTop - 100,
+                            top: target.offsetTop - 80,
                             behavior: 'smooth'
                         });
+                        
+                        // Fechar menu mobile se estiver aberto
+                        if (mobileMenu.style.display === 'flex') {
+                            menuToggle.classList.remove('active');
+                            mobileMenu.style.display = 'none';
+                        }
                     }
-                });
-            });
-            
-            // Efeito de brilho nas estrelas
-            setInterval(() => {
-                document.documentElement.style.setProperty('--glow-intensity', Math.random() * 0.4 + 0.4);
-            }, 3000);
-            
-            // Efeito de hover nos planos
-            const planCards = document.querySelectorAll('.plan-card');
-            planCards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.boxShadow = `0 35px 70px rgba(0, 0, 0, 0.5)`;
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.style.boxShadow = `0 20px 40px rgba(0, 0, 0, 0.3)`;
                 });
             });
         });
